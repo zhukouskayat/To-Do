@@ -1,0 +1,99 @@
+body {
+  background-color: #f4f8fe;
+}
+
+.title {
+  color: #c6d4ea;
+}
+
+#todo-counter {
+  color: #8e99b2;
+}
+
+#clear-form-button {
+  color: white;
+  background-color: #424e74;
+}
+
+#clear-form-button:hover {
+  cursor: pointer;
+  background-color: #35405f;
+}
+
+#add-todo-button {
+  color: white;
+  background-color: #889bd3;
+}
+
+#add-todo-button:hover {
+  cursor: pointer;
+  background-color: #7d8ec2;
+}
+
+.item {
+  background-color: white;
+}
+
+.item h3 {
+  color: #60687b;
+}
+
+.created-date-panel,
+.done-date-panel,
+.status-panel {
+  color: #8e99b2;
+}
+
+.view-button {
+  color: white;
+  background-color: #9dc9f3;
+}
+
+.view-button:hover {
+  cursor: pointer;
+  background-color: #92bee7;
+}
+
+.postpone-button {
+  color: white;
+  background-color: #c8b4da;
+}
+
+.postpone-button:hover {
+  cursor: pointer;
+  background-color: #b39ec5;
+}
+
+.resume-button {
+  color: white;
+  background-color: #ae8fb1;
+}
+
+.resume-button:hover {
+  cursor: pointer;
+  background-color: #a283a5;
+}
+
+.delete-button {
+  color: white;
+  background-color: #424e74;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background-color: #35405f;
+}
+
+.done-button {
+  color: white;
+  background-color: #889bd3;
+}
+
+.done-button:hover {
+  cursor: pointer;
+  background-color: #7d8ec2;
+}
+
+.empty-list {
+  color: #8e99b2;
+}

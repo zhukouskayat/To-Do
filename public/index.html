@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/colors.css" />
+    <link rel="stylesheet" href="./styles/geometry.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
 
     <title>TODO Application</title>
   </head>
@@ -12,7 +15,7 @@
     <div id="root">
       <div id="app-container">
         <div class="edit-form-container">
-          <h1>Create Todo</h1>
+          <h1 class="title">To-Do</h1>
           <div class="editor-form">
             <form>
               <div class="form-row-left">
@@ -26,9 +29,8 @@
           </div>
         </div>
         <div class="todo-list-container">
-          <h1>My ToDos</h1>
           <h2 id="todo-counter">Total Todo Count: 0</h2>
-          <div class="list-filter-container">Filter</div>
+          <!-- <div class="list-filter-container">Filter</div> -->
           <div class="todo-list" id="todo-list">
             <div class="empty-list">
               Nothing to do
