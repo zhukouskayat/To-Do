@@ -29,6 +29,11 @@
   width: 100%;
 }
 
+#todo-list {
+display: flex;
+flex-direction: column-reverse;
+}
+
 .item {
   border: 1px dotted gray;
   padding-bottom: 10px;
