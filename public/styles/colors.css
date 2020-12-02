@@ -44,12 +44,14 @@ body {
   color: #8e99b2;
 }
 
-.view-button {
+.view-button,
+.back-to-list-button {
   color: white;
   background-color: #9dc9f3;
 }
 
-.view-button:hover {
+.view-button:hover,
+.back-to-list-button:hover {
   cursor: pointer;
   background-color: #92bee7;
 }

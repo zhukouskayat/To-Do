@@ -1,7 +1,7 @@
-/* eslint-disable import/extensions */
-
 import { createElement } from "../helpers.js";
 import todoState from "../model/todoState.js";
+import { getTodoEventHandlers } from "../events/todoEventHandlers.js";
+import { setupEventListeners } from "../events.js";
 
 function renderTextBlock(doc, todo) {
   const textItem = createElement(doc, "h3");
@@ -23,9 +23,11 @@ function renderStatusPanel(doc, todo) {
 }
 
 function formatDateForPanel(prefix, date) {
-  const datePart = `${`0${date.getDate()}`.slice(-2)}.${`0${date.getMonth() + 1}`.slice(-2)}.${`0${date.getFullYear()}`.slice(-2)}`;
+  const datePart = `${date.getDate()}.${
+    date.getMonth() + 1
+  }.${date.getFullYear()}`;
 
-  const timePart = `${`0${date.getHours()}`.slice(-2)}:${`0${date.getMinutes()}`.slice(-2)}`;
+  const timePart = `${date.getHours()}:${date.getMinutes()}`;
 
   return `${prefix}: ${datePart} - ${timePart}`;
 }
@@ -71,7 +73,13 @@ function renderControlBlock(doc, todo) {
   const controlBlock = createElement(doc, "div", "control-block");
 
   controlBlock.append(
-    renderButton(doc, "view", todo.id, "view-button", "View")
+    renderButton(
+      doc,
+      "back-to-list",
+      todo.id,
+      "back-to-list-button",
+      "Back to list"
+    )
   );
 
   if (todo.state === todoState.InProcess) {
@@ -102,12 +110,21 @@ function renderControlBlock(doc, todo) {
   return controlBlock;
 }
 
-export default function renderTodoItem(doc, todo) {
+export default function renderFullTodoItem(doc, todo) {
+  const rootElement = doc.querySelector("#root");
+  rootElement.querySelectorAll("*").forEach((n) => n.remove());
+
+  const container = createElement(doc, "div", "");
+  container.id = "todo-list";
+
   const todoItem = createElement(doc, "div", "item");
 
   todoItem.append(renderTextBlock(doc, todo));
   todoItem.append(renderInfoBlock(doc, todo));
   todoItem.append(renderControlBlock(doc, todo));
 
-  return todoItem;
+  container.append(todoItem);
+  rootElement.append(container);
+
+  setupEventListeners(doc, getTodoEventHandlers(doc));
 }
