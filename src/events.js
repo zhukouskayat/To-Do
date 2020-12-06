@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/prefer-default-export */
-
 function setupEventListenerByName(doc, elementId, eventName, handler) {
   const element = doc.getElementById(elementId);
   if (element !== null) {

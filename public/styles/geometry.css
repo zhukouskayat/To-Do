@@ -12,7 +12,7 @@
   margin: auto;
 }
 
-.title {
+#app-container h1 {
   margin: 50px 0px 30px 0px;
 }
 
@@ -85,6 +85,10 @@ button {
   border-radius: 25px;
   margin-top: 10px;
   margin-left: 10px;
+}
+
+#total-counter-text {
+  margin-right: 10px;
 }
 
 #add-todo-button,

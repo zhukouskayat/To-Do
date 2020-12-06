@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+
 import Todo from "./todo.js";
 
 class TodoStorage {

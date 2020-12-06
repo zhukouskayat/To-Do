@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+
 import todoState from "./todoState.js";
 
 export default class Todo {
