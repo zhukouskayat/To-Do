@@ -1,3 +1,10 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-console */
+/* eslint-disable dot-notation */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
+
 import { getTodoInput } from "../helpers.js";
 
 import todoStorage from "../model/todoStorage.js";
@@ -91,57 +98,93 @@ function todoListActionHandler(doc, event) {
   }
 }
 
+let boundAddTodoHandler = null;
+let boundClearFormHandler = null;
+let boundTodoListActionHandler = null;
+let boundUpdateTotalTodoCount = null;
+let boundUpdateTodoList = null;
+let boundRenderTodo = null;
+
 export function getListEventHandlers(doc) {
-  return [
-    {
-      elementId: "add-todo-button",
-      eventName: "click",
-      handler: addTodoHandler.bind(null, doc),
-    },
-    {
-      elementId: "clear-form-button",
-      eventName: "click",
-      handler: clearFormHandler.bind(null, doc),
-    },
-    {
-      elementId: "todo-list",
-      eventName: "click",
-      handler: todoListActionHandler.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-created",
-      handler: updateTotalTodoCount.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-created",
-      handler: updateTodoList.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-created",
-      handler: clearFormHandler.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-changed",
-      handler: updateTodoList.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-deleted",
-      handler: updateTotalTodoCount.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-deleted",
-      handler: updateTodoList.bind(null, doc),
-    },
-    {
-      element: doc,
-      eventName: "todo-item-shown",
-      handler: renderTodo.bind(null, doc),
-    },
-  ];
+  boundAddTodoHandler =
+    boundAddTodoHandler !== null
+      ? boundAddTodoHandler
+      : addTodoHandler.bind(null, doc);
+
+  boundClearFormHandler =
+    boundClearFormHandler !== null
+      ? boundClearFormHandler
+      : clearFormHandler.bind(null, doc);
+
+  boundTodoListActionHandler =
+    boundTodoListActionHandler !== null
+      ? boundTodoListActionHandler
+      : todoListActionHandler.bind(null, doc);
+
+  boundUpdateTotalTodoCount =
+    boundUpdateTotalTodoCount !== null
+      ? boundUpdateTotalTodoCount
+      : updateTotalTodoCount.bind(null, doc);
+
+  boundUpdateTodoList =
+    boundUpdateTodoList !== null
+      ? boundUpdateTodoList
+      : updateTodoList.bind(null, doc);
+
+  boundRenderTodo =
+    boundRenderTodo !== null 
+    ? boundRenderTodo 
+    : renderTodo.bind(null, doc);
+    return [
+      {
+        elementId: "add-todo-button",
+        eventName: "click",
+        handler: boundAddTodoHandler,
+      },
+      {
+        elementId: "clear-form-button",
+        eventName: "click",
+        handler: boundClearFormHandler,
+      },
+      {
+        elementId: "todo-list",
+        eventName: "click",
+        handler: boundTodoListActionHandler,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-created",
+        handler: boundUpdateTotalTodoCount,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-created",
+        handler: boundUpdateTodoList,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-created",
+        handler: boundClearFormHandler,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-changed",
+        handler: boundUpdateTodoList,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-deleted",
+        handler: boundUpdateTotalTodoCount,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-deleted",
+        handler: boundUpdateTodoList,
+      },
+      {
+        element: doc,
+        eventName: "todo-item-shown",
+        handler: boundRenderTodo,
+      },
+    ];
 }
