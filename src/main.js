@@ -1,8 +1,13 @@
-import todoStorage from "./model/todoStorage.js";
-import renderTodoListPage from "./view/todoListPage/todoListPage.js";
+/* eslint-disable no-console */
+/* eslint-disable import/extensions */
+/* eslint-disable import/prefer-default-export */
+
+import configureRouter from "./routerConfig.js";
 
 export function startApplication(doc) {
   console.log("TODO Application started");
 
-  renderTodoListPage(doc, todoStorage.getAllTodo());
+  const router = configureRouter(doc, "/");
+
+  router.navigate("/");
 }
