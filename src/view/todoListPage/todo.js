@@ -1,4 +1,7 @@
-import { createElement } from "../../helpers.js";
+/* eslint-disable import/extensions */
+import {
+  createElement
+} from "../../helpers.js";
 import todoState from "../../model/todoState.js";
 
 function renderTextBlock(doc, todo) {
@@ -21,11 +24,9 @@ function renderStatusPanel(doc, todo) {
 }
 
 function formatDateForPanel(prefix, date) {
-  const datePart = `${date.getDate()}.${
-    date.getMonth() + 1
-  }.${date.getFullYear()}`;
+  const datePart = `${`0${date.getDate()}`.slice(-2)}.${`0${date.getMonth() + 1}`.slice(-2)}.${`0${date.getFullYear()}`.slice(-2)}`;
 
-  const timePart = `${date.getHours()}:${date.getMinutes()}`;
+  const timePart = `${`0${date.getHours()}`.slice(-2)}:${`0${date.getMinutes()}`.slice(-2)}`;
 
   return `${prefix}: ${datePart} - ${timePart}`;
 }
