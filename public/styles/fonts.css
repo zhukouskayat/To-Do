@@ -36,6 +36,12 @@ button {
   font-size: 16px;
 }
 
-.empty-list {
+.empty-list,
+.statistic-container {
   font-size: 16px;
+}
+
+.statistic-container {
+  text-decoration: transparent;
+  font-weight: 500;
 }

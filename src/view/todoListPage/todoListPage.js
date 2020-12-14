@@ -77,6 +77,14 @@ function renderTodoTotal(doc, totalCount) {
   return h2;
 }
 
+function renderStatPage(doc) {
+  const statDiv = createElement(doc, "a", "statistic-container");
+  statDiv.id = "statistics";
+  statDiv.href = "#"; 
+  statDiv.innerHTML = "Show statistics";
+  return statDiv;
+}
+
 function renderEmptyPlaceholder(doc) {
   const emptyList = createElement(doc, "div", "empty-list");
   emptyList.innerHTML = "Nothing to do";
@@ -104,6 +112,7 @@ function renderTodoListContent(doc, allTodo) {
   const listContainer = createElement(doc, "div", "todo-list-container");
 
   listContainer.append(renderTodoTotal(doc, allTodo.length));
+  listContainer.append(renderStatPage(doc));
   listContainer.append(renderTodoList(doc, allTodo));
 
   return listContainer;

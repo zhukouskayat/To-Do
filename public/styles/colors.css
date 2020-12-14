@@ -97,6 +97,11 @@ body {
   background-color: #7d8ec2;
 }
 
-.empty-list {
+.empty-list,
+.statistic-container {
   color: #8e99b2;
+}
+
+.statistic-container:hover {
+  color: #7b86a0;
 }

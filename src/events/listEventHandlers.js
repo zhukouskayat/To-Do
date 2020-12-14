@@ -47,6 +47,11 @@ function navigateToTodo(doc, event) {
   router.navigate(`todo/${todoId}`);
 }
 
+function navigateToStatstics(doc) {
+  const router = configureRouter(doc);
+  router.navigate(`statistics`);
+}
+
 function notifyAboutTodoChange(doc) {
   const todoItemChanged = new Event("todo-item-changed");
   doc.dispatchEvent(todoItemChanged);
@@ -105,8 +110,12 @@ let boundTodoListActionHandler = null;
 let boundUpdateTotalTodoCount = null;
 let boundUpdateTodoList = null;
 let boundNavigateToTodo = null;
+let boundNavigateToStatstics = null;
 
 export function getListEventHandlers(doc) {
+  const link = doc.getElementById('statistics');
+  link.addEventListener('click', (e) => e.preventDefault());
+
   boundAddTodoHandler =
     boundAddTodoHandler !== null
       ? boundAddTodoHandler
@@ -136,6 +145,11 @@ export function getListEventHandlers(doc) {
     boundNavigateToTodo !== null
       ? boundNavigateToTodo
       : navigateToTodo.bind(null, doc);
+
+      boundNavigateToStatstics =
+      boundNavigateToStatstics !== null
+        ? boundNavigateToStatstics
+        : navigateToStatstics.bind(null, doc);
 
   return [
     {
@@ -187,6 +201,12 @@ export function getListEventHandlers(doc) {
       element: doc,
       eventName: "todo-item-shown",
       handler: boundNavigateToTodo,
+    },
+
+    {
+      elementId: "statistics",
+      eventName: "click",
+      handler: boundNavigateToStatstics,
     },
   ];
 }
