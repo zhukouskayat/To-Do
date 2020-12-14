@@ -14,9 +14,25 @@ function renderTitle(doc, titleText) {
 }
 
 function renderInfoBlock(doc) {
+  const info = createElement(doc, "div");
+
   const totalCount = createElement(doc, "p", "statistic-total");
-  totalCount.innerHTML = `Total Todo Count: ${todoStorage.totalTodoCount()}`
-  return totalCount;
+  totalCount.innerHTML = `Total Todo Count: ${todoStorage.totalTodoCount()}`;
+  info.append(totalCount);
+
+  const doneCount = createElement(doc, "p", "statistic-done");
+  doneCount.innerHTML = `Done Todo Count`;
+  info.append(doneCount);
+
+  const postponeCount = createElement(doc, "p", "statistic-postpone");
+  postponeCount.innerHTML = `Postpone Todo Count`;
+  info.append(postponeCount);
+
+  const deleteCount = createElement(doc, "p", "statistic-delete");
+  deleteCount.innerHTML = `Delete Todo Count`;
+  info.append(deleteCount);
+
+  return info;
 }
 
 export default function renderStatisticsPage(doc) {

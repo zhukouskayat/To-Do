@@ -89,6 +89,7 @@ button {
 
 #total-counter-text {
   margin-right: 10px;
+  padding-bottom: 15px;
 }
 
 #add-todo-button,
@@ -106,4 +107,11 @@ button {
 
 .title-statistics {
 margin-bottom: 30px;
+}
+
+.statistic-total,
+.statistic-done,
+.statistic-postpone,
+.statistic-delete {
+  margin-bottom: 15px;
 }

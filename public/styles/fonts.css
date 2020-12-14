@@ -47,11 +47,14 @@ button {
 }
 
 .title-statistics {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
 }
 
-.statistic-total {
-  font-size: 18px;
+.statistic-total,
+.statistic-done,
+.statistic-postpone,
+.statistic-delete {
+  font-size: 16px;
   font-weight: 500;
 }
