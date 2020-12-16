@@ -39,7 +39,9 @@ export default function renderStatisticsPage(doc) {
   const rootElement = clearRootElement(doc);
 
   const statisticContainer = createElement(doc, "div", "statistic-container");
-  rootElement.append(statisticContainer);
   statisticContainer.append(renderTitle(doc, "Statistics:"));
-  statisticContainer.append(renderInfoBlock(doc));
+  const statistics = createElement(doc, "div", "statistics");
+  statisticContainer.append(statistics)
+  rootElement.append(statisticContainer);
+  statistics.append(renderInfoBlock(doc));
 }
