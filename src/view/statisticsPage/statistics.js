@@ -21,15 +21,15 @@ function renderInfoBlock(doc) {
   info.append(totalCount);
 
   const doneCount = createElement(doc, "p", "statistic-done");
-  doneCount.innerHTML = `Done Todo Count`;
+  doneCount.innerHTML = `Done Todo Count: ${todoStorage.doneCount}`;
   info.append(doneCount);
 
   const postponeCount = createElement(doc, "p", "statistic-postpone");
-  postponeCount.innerHTML = `Postpone Todo Count`;
+  postponeCount.innerHTML = `Postpone Todo Count: ${todoStorage.posponeCount}`;
   info.append(postponeCount);
 
   const deleteCount = createElement(doc, "p", "statistic-delete");
-  deleteCount.innerHTML = `Delete Todo Count`;
+  deleteCount.innerHTML = `Delete Todo Count: ${todoStorage.deleteCount}`;
   info.append(deleteCount);
 
   return info;
