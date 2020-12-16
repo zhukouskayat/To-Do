@@ -110,3 +110,13 @@ body {
 .statistics {
   background-color: white;
 }
+
+.back-to-list-button-statictics {
+  color: white;
+  background-color: #889bd3;
+}
+
+.back-to-list-button-statictics:hover {
+  cursor: pointer;
+  background-color: #7d8ec2;
+}

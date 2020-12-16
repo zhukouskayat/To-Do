@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 
 import {
@@ -6,6 +7,7 @@ import {
 } from "../../helpers.js";
 
 import todoStorage from "../../model/todoStorage.js";
+import configureRouter from "../../routerConfig.js";
 
 function renderTitle(doc, titleText) {
   const h1 = createElement(doc, "h1", "title-statistics");
@@ -35,13 +37,32 @@ function renderInfoBlock(doc) {
   return info;
 }
 
+function renderButton(doc) {
+  const button = createElement(doc, "div");
+
+  const backToListButton = createElement(doc, "button", "back-to-list-button-statictics");
+  backToListButton.innerHTML = "Back To List";
+  backToListButton.addEventListener("click", () => {
+    const router = configureRouter(doc, "/");
+    router.navigate("/");
+  });
+
+  button.append(backToListButton);
+
+  return button;
+}
+
+
 export default function renderStatisticsPage(doc) {
   const rootElement = clearRootElement(doc);
 
   const statisticContainer = createElement(doc, "div", "statistic-container");
   statisticContainer.append(renderTitle(doc, "Statistics:"));
+
   const statistics = createElement(doc, "div", "statistics");
   statisticContainer.append(statistics)
+  
   rootElement.append(statisticContainer);
   statistics.append(renderInfoBlock(doc));
+  statisticContainer.append(renderButton(doc))
 }
