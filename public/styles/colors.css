@@ -103,6 +103,10 @@ body {
   color: #8e99b2;
 }
 
+.statistic-container:hover {
+  color: #7b86a0;
+}
+
 .statistics {
   background-color: white;
 }
