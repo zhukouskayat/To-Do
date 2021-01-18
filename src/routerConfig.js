@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
+
 import Router from "./router.js";
 
 import todoStorage from "./model/todoStorage.js";
@@ -6,7 +9,6 @@ import renderTodoListPage from "./view/todoListPage/todoListPage.js";
 import renderTodoPage from "./view/todoPage/todoPage.js";
 
 import renderStatisticsPage from "./view/statisticsPage/statistics.js";
-
 let router = null;
 
 export default (doc, appRootPath) => {
@@ -16,15 +18,15 @@ export default (doc, appRootPath) => {
 
   router = new Router([], "history", appRootPath);
 
-  router.add(/^\/$/, () => {
+  router.add(/^\/$/, async () => {
     console.log("=> Navigating to page");
-    renderTodoListPage(doc, todoStorage.getAllTodo());
+    renderTodoListPage(doc, await todoStorage.getAllTodo());
   });
 
-  router.add(/^todo\/(.*)$/, (todoId) => {
+  router.add(/^todo\/(.*)$/, async (todoId) => {
     const parsedTodoId = parseInt(todoId);
     console.log(`=> Navigating to todo page with id: ${parsedTodoId}`);
-    renderTodoPage(doc, todoStorage.getTodoById(parsedTodoId));
+    renderTodoPage(doc, await todoStorage.getTodoById(parsedTodoId));
   });
 
   router.add(/^statistics$/, () => {
